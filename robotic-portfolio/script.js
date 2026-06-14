@@ -472,12 +472,22 @@ function selectWire(wireId) {
   // Show Inspector Panel
   const conn = connectionsData.find(c => c.id === wireId);
   if (conn) {
-    document.getElementById('inspector-empty').style.display = 'none';
-    document.getElementById('inspector-selected').style.display = 'block';
-    document.getElementById('ins-source-id').innerText = conn.fromId;
+    const emptyEl = document.getElementById('inspector-empty');
+    const selectedEl = document.getElementById('inspector-selected');
+    const sourceEl = document.getElementById('ins-source-id');
+    const targetEl = document.getElementById('ins-target-name');
+
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (selectedEl) selectedEl.style.display = 'block';
+    if (sourceEl) sourceEl.innerText = conn.fromId;
     
-    const targetName = document.querySelector(`#${conn.toId} .frame-name`).innerText;
-    document.getElementById('ins-target-name').innerText = targetName;
+    const targetFrame = document.getElementById(conn.toId);
+    if (targetFrame) {
+      const frameNameEl = targetFrame.querySelector('.frame-name');
+      if (targetEl && frameNameEl) {
+        targetEl.innerText = frameNameEl.innerText;
+      }
+    }
   }
 }
 
@@ -499,6 +509,7 @@ function highlightScreenWires(screenId) {
 // Sidebar list initialization
 function initSidebarList() {
   const list = document.getElementById('sidebar-connections-list');
+  if (!list) return;
   list.innerHTML = '';
   
   connectionsData.forEach(conn => {
@@ -623,14 +634,20 @@ function setDeviceFrame(type) {
   const btnDesktop = document.getElementById('btn-device-desktop');
   const btnMobile = document.getElementById('btn-device-mobile');
   
-  if (type === 'desktop') {
-    frame.className = 'device-frame desktop-device';
-    btnDesktop.classList.add('active');
-    btnMobile.classList.remove('active');
-  } else {
-    frame.className = 'device-frame mobile-device';
-    btnDesktop.classList.remove('active');
-    btnMobile.classList.add('active');
+  if (frame) {
+    if (type === 'desktop') {
+      frame.className = 'device-frame desktop-device';
+    } else {
+      frame.className = 'device-frame mobile-device';
+    }
+  }
+  if (btnDesktop) {
+    if (type === 'desktop') btnDesktop.classList.add('active');
+    else btnDesktop.classList.remove('active');
+  }
+  if (btnMobile) {
+    if (type === 'mobile') btnMobile.classList.add('active');
+    else btnMobile.classList.remove('active');
   }
 }
 
