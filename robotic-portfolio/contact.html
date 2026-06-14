@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Fauzan - Contact</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="website-mode">
+  <div class="website-container" id="workspace-website">
+    <div class="play-screen active">
+      <div class="screen-content">
+            <header class="mock-header">
+              <a href="index.html" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
+              <nav class="mock-nav">
+                <a href="index.html" class="mock-nav-item prototype-hotspot" id="s8-nav-home" data-target="screen-home">Home</a>
+                <a href="explore.html" class="mock-nav-item prototype-hotspot" id="s8-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="skills.html" class="mock-nav-item prototype-hotspot" id="s8-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="tools.html" class="mock-nav-item prototype-hotspot" id="s8-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="projects.html" class="mock-nav-item prototype-hotspot" id="s8-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="contact.html" class="mock-nav-item active prototype-hotspot" id="s8-nav-contact" data-target="screen-contact">Contact</a>
+              </nav>
+              <div class="header-actions-group">
+                <a href="cv.html" class="mock-btn-cv prototype-hotspot" id="s8-btn-cv" data-target="screen-cv">CV Saya</a>
+                <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
+              </div>
+            </header>
+            <main class="mock-main">
+              <div class="contact-section-inner">
+                <div class="contact-left">
+                  <div class="section-badge">HUBUNGI SAYA</div>
+                  <h2>Kirimkan Pesan</h2>
+                  <form class="contact-form-sim" onsubmit="event.preventDefault(); triggerSubmitSim();">
+                    <input type="text" placeholder="Nama Anda" class="contact-input" required />
+                    <input type="email" placeholder="Email Anda" class="contact-input" required />
+                    <textarea placeholder="Pesan Anda..." class="contact-textarea" rows="4" required></textarea>
+                    <!-- Form submit triggers transition back to Home with a success toast -->
+                    <a href="index.html" class="contact-btn-submit prototype-hotspot" id="s8-btn-submit" data-target="screen-home" onclick="triggerSubmitSim()">Kirim Pesan & Return Home</a>
+                  </form>
+                </div>
+                <div class="contact-right">
+                  <h3>Tautan Langsung</h3>
+                  <p>Klik tombol di bawah untuk menghubungi saya langsung secara instan:</p>
+                  <div class="direct-links-grid">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fauzanzainularifin14@gmail.com" target="_blank" class="contact-social-btn email-btn">
+                      <span>Email</span>
+                    </a>
+                    <a href="https://wa.me/6281368740383?text=halo%20kak%20fauzan%20saya%20ingin%20berkenalan%20dengan%20anda" target="_blank" class="contact-social-btn wa-btn">
+                      <span>WhatsApp</span>
+                    </a>
+                    <a href="https://www.instagram.com/holdupp_zannn" target="_blank" class="contact-social-btn ig-btn">
+                      <span>Instagram</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+    </div>
+  </div>
+  
+  
+  
+  <script src="script.js"></script>
+</body>
+</html>
