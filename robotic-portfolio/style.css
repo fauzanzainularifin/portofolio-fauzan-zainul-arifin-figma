@@ -2046,3 +2046,56 @@ body.website-mode .mock-header {
   padding: 0 max(2rem, calc((100vw - 1200px) / 2 + 2rem));
 }
 
+/* ==========================================================================
+   EXPORT CANVAS MODE (CLEAN CANVAS RENDER FOR FIGMA IMPORT)
+   ========================================================================== */
+
+body.export-canvas-mode {
+  overflow: auto !important;
+  height: auto !important;
+  width: auto !important;
+  background: transparent !important;
+}
+
+body.export-canvas-mode .top-bar,
+body.export-canvas-mode .sidebar,
+body.export-canvas-mode .wires-overlay,
+body.export-canvas-mode .floating-editor-toggle,
+body.export-canvas-mode .success-toast,
+body.export-canvas-mode .frame-label,
+body.export-canvas-mode .mock-btn-figma {
+  display: none !important;
+}
+
+body.export-canvas-mode #workspace-canvas {
+  display: block !important;
+  width: 3700px !important;
+  height: 3300px !important;
+  overflow: visible !important;
+  position: relative !important;
+  background: transparent !important;
+}
+
+body.export-canvas-mode #canvas-viewport {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
+  position: relative !important;
+  background: transparent !important;
+  cursor: default !important;
+}
+
+body.export-canvas-mode #canvas-inner {
+  transform: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
+body.export-canvas-mode .figma-frame {
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: var(--bg-dark) !important;
+}
+

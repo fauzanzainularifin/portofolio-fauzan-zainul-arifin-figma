@@ -8,158 +8,29 @@
   <!-- Font Poppins & Orbitron (untuk tema robotik/teknologi) -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="editor-mode">
+<body class="website-mode">
 
-  <!-- ================= TOP BAR CONTROL ================= -->
-  <header class="top-bar">
-    <div class="top-left">
-      <div class="prototype-logo">
-        <svg class="figma-icon" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 0C29.5 0 38 8.5 38 19C38 24.3 35.8 29.1 32.2 32.5C28.8 35.8 24.3 38 19 38C8.5 38 0 29.5 0 19C0 8.5 8.5 0 19 0Z" fill="#F24E1E"/>
-          <path d="M19 38C29.5 38 38 46.5 38 57L19 57C8.5 57 0 46.5 0 38C0 32.7 2.2 27.9 5.8 24.5C9.2 21.2 13.7 19 19 19L19 38Z" fill="#A259FF"/>
-          <path d="M0 19C0 13.7 2.2 8.9 5.8 5.5L19 19L0 19Z" fill="#0ACF83"/>
-          <path d="M19 19C24.3 19 28.8 21.2 32.2 24.5C35.8 27.9 38 32.7 38 38C38 48.5 29.5 57 19 57C8.5 57 0 48.5 0 38C0 32.7 2.2 27.9 5.8 24.5C9.2 21.2 13.7 19 19 19Z" fill="#1ABCFE"/>
-        </svg>
-        <span>Figma Prototyper</span>
-      </div>
-      <div class="divider"></div>
-      <div class="project-name">Portofolio Fauzan - Flow Utama</div>
-    </div>
-
-    <!-- Mode Switcher -->
-    <div class="top-middle">
-      <div class="mode-tabs">
-        <button class="mode-tab active" id="btn-canvas-mode" onclick="setMode('canvas')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
-          Kanvas Alur
-        </button>
-        <button class="mode-tab" id="btn-play-mode" onclick="setMode('play')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Presentasi (Play)
-        </button>
-      </div>
-    </div>
-
-    <!-- Canvas Navigation and Settings -->
-    <div class="top-right">
-      <div class="canvas-controls" id="canvas-zoom-controls">
-        <button class="control-btn" onclick="zoomCanvas(-0.1)" title="Zoom Out">-</button>
-        <span class="zoom-pct" id="zoom-value">75%</span>
-        <button class="control-btn" onclick="zoomCanvas(0.1)" title="Zoom In">+</button>
-        <button class="control-btn" onclick="zoomFit()" title="Fit Screen">Fit</button>
-      </div>
-      <div class="divider"></div>
-      <div class="view-toggles">
-        <label class="toggle-container">
-          <input type="checkbox" id="chk-show-wires" checked onchange="toggleWires(this.checked)">
-          <span class="toggle-label">Garis Hubung</span>
-        </label>
-        <label class="toggle-container">
-          <input type="checkbox" id="chk-show-hotspots" checked onchange="toggleHotspots(this.checked)">
-          <span class="toggle-label">Hotspots</span>
-        </label>
-      </div>
-    </div>
-  </header>
-
-  <!-- ================= MAIN WORKSPACE (CANVAS VIEW) ================= -->
+  <!-- ================= PORTFOLIO CANVAS (SOURCE SCREENS) ================= -->
   <div class="workspace-container" id="workspace-canvas">
-    
-    <!-- LEFT SIDEBAR: Layers list -->
-    <aside class="sidebar left-sidebar">
-      <div class="sidebar-header">
-        <h3>Layar Desain (Frames)</h3>
-      </div>
-      <div class="sidebar-content">
-        <ul class="layers-list">
-          <li class="layer-item active" data-screen="screen-home" onclick="focusScreen('screen-home')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">1. Home Screen</span>
-          </li>
-          <li class="layer-item" data-screen="screen-explore" onclick="focusScreen('screen-explore')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">2. Explore Screen</span>
-          </li>
-          <li class="layer-item" data-screen="screen-skills" onclick="focusScreen('screen-skills')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">3. Skills Screen</span>
-          </li>
-          <li class="layer-item" data-screen="screen-tools" onclick="focusScreen('screen-tools')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">4. Tools Screen</span>
-          </li>
-          <li class="layer-item" data-screen="screen-projects" onclick="focusScreen('screen-projects')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">5. Projects Screen</span>
-          </li>
-          <li class="layer-item" data-screen="screen-project-detail-1" onclick="focusScreen('screen-project-detail-1')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">6. Detail Proyek 1</span>
-          </li>
-          <li class="layer-item" data-screen="screen-project-detail-2" onclick="focusScreen('screen-project-detail-2')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">7. Detail Proyek 2</span>
-          </li>
-          <li class="layer-item" data-screen="screen-contact" onclick="focusScreen('screen-contact')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">8. Contact Screen</span>
-          </li>
-          <li class="layer-item" data-screen="screen-cv" onclick="focusScreen('screen-cv')">
-            <span class="layer-icon">🔲</span>
-            <span class="layer-name">9. CV Saya Screen</span>
-          </li>
-        </ul>
-
-        <div class="sidebar-header" style="margin-top: 1.5rem;">
-          <h3>Interaksi Terhubung</h3>
-        </div>
-        <ul class="connections-list" id="sidebar-connections-list">
-          <!-- Terisi otomatis lewat Javascript -->
-        </ul>
-      </div>
-    </aside>
-
-    <!-- CENTER CANVAS WRAPPER -->
     <div class="canvas-viewport" id="canvas-viewport">
       <div class="canvas-inner" id="canvas-inner">
-        
-        <!-- SVG OVERLAY FOR WIRES -->
-        <svg class="wires-overlay" id="wires-overlay">
-          <defs>
-            <!-- Arrow head marker -->
-            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#24d6dc" />
-            </marker>
-            <marker id="arrow-selected" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#ff3f7f" />
-            </marker>
-            <!-- Glowing filters -->
-            <filter id="glow-wire" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
-          <!-- Wires path will be rendered here dynamically -->
-        </svg>
-
-        <!-- ================= FIGMA SCREENS ================= -->
 
         <!-- SCREEN 1: HOME -->
         <div class="figma-frame" id="screen-home" style="left: 100px; top: 100px;">
           <div class="frame-label"><span class="frame-name">1. Home Screen</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s1-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s1-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s1-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s1-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s1-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s1-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item active prototype-hotspot" id="s1-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s1-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s1-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s1-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item prototype-hotspot" id="s1-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s1-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s1-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s1-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
@@ -171,8 +42,8 @@
                   <p class="hero-subtitle">UI/UX Designer, Video Editor, & Web Developer</p>
                   <p class="hero-desc">Mahasiswa Universitas Sebelas April yang bersemangat dalam menggabungkan teknologi, estetika visual, dan antarmuka interaktif.</p>
                   <div class="hero-actions">
-                    <button class="hero-btn-primary prototype-hotspot" id="s1-hero-explore" data-target="screen-explore">Jelajahi Profil</button>
-                    <button class="hero-btn-secondary prototype-hotspot" id="s1-hero-contact" data-target="screen-contact">Kontak Saya</button>
+                    <a href="#screen-explore" class="hero-btn-primary prototype-hotspot" id="s1-hero-explore" data-target="screen-explore">Jelajahi Profil</a>
+                    <a href="#screen-contact" class="hero-btn-secondary prototype-hotspot" id="s1-hero-contact" data-target="screen-contact">Kontak Saya</a>
                   </div>
                 </div>
                 <div class="hero-right">
@@ -195,17 +66,17 @@
           <div class="frame-label"><span class="frame-name">2. Explore Screen</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s2-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s2-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s2-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s2-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s2-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s2-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s2-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item active prototype-hotspot" id="s2-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s2-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s2-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item prototype-hotspot" id="s2-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s2-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s2-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s2-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
@@ -216,7 +87,7 @@
                   <h2 class="section-title">Profil Singkat</h2>
                   <p class="explore-p">Halo, saya Fauzan Zainul Arifin, seorang mahasiswa dari Universitas Sebelas April yang memiliki minat besar di dunia teknologi, desain, dan editing. Saya hobi bermain game serta suka mempelajari hal-hal baru, terutama yang berhubungan dengan kreatif digital.</p>
                   <p class="explore-p">Saya memiliki tujuan untuk menjadi pribadi yang sukses dan membahagiakan orang tua melalui karya serta kerja keras.</p>
-                  <button class="explore-btn-next prototype-hotspot" id="s2-btn-skills" data-target="screen-skills">Lihat Kemampuan ➜</button>
+                  <a href="#screen-skills" class="explore-btn-next prototype-hotspot" id="s2-btn-skills" data-target="screen-skills">Lihat Kemampuan ➜</a>
                 </div>
                 <div class="explore-right">
                   <div class="robotic-terminal">
@@ -250,17 +121,17 @@
           <div class="frame-label"><span class="frame-name">3. Skills Screen</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s3-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s3-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s3-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s3-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s3-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s3-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s3-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s3-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item active prototype-hotspot" id="s3-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s3-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item prototype-hotspot" id="s3-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s3-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s3-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s3-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
@@ -307,7 +178,7 @@
                 </div>
               </div>
               <div class="skills-footer">
-                <button class="skills-btn-next prototype-hotspot" id="s3-btn-tools" data-target="screen-tools">Lihat Tools & Stack Dikuasai ➜</button>
+                <a href="#screen-tools" class="skills-btn-next prototype-hotspot" id="s3-btn-tools" data-target="screen-tools">Lihat Tools & Stack Dikuasai ➜</a>
               </div>
             </main>
           </div>
@@ -318,17 +189,17 @@
           <div class="frame-label"><span class="frame-name">4. Tools Screen</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s4-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s4-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s4-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s4-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s4-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s4-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s4-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s4-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s4-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item active prototype-hotspot" id="s4-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item prototype-hotspot" id="s4-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s4-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s4-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s4-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
@@ -366,7 +237,7 @@
                   </div>
                 </div>
                 <div class="tools-footer">
-                  <button class="tools-btn-next prototype-hotspot" id="s4-btn-projects" data-target="screen-projects">Lihat Hasil Proyek Saya ➜</button>
+                  <a href="#screen-projects" class="tools-btn-next prototype-hotspot" id="s4-btn-projects" data-target="screen-projects">Lihat Hasil Proyek Saya ➜</a>
                 </div>
               </div>
             </main>
@@ -378,17 +249,17 @@
           <div class="frame-label"><span class="frame-name">5. Projects Screen</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s5-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s5-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s5-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s5-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s5-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s5-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s5-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s5-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s5-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s5-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item active prototype-hotspot" id="s5-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s5-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s5-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s5-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
@@ -401,7 +272,7 @@
                 <div class="projects-grid-2x2">
                   
                   <!-- Card 1: Watch in Silence -->
-                  <div class="project-card-compact prototype-hotspot" id="s5-proj-card-1" data-target="screen-project-detail-1">
+                  <a href="#screen-project-detail-1" class="project-card-compact prototype-hotspot" id="s5-proj-card-1" data-target="screen-project-detail-1">
                     <img src="watch in silence.png" alt="Film Pendek: Watch in Silence" class="proj-card-img" />
                     <div class="proj-meta">
                       <h4>Film Pendek: Watch in Silence</h4>
@@ -409,10 +280,10 @@
                       <p>Film tanpa dialog yang mengandalkan gerak tubuh & sound effect...</p>
                       <span class="click-details">Detail Proyek ➜</span>
                     </div>
-                  </div>
+                  </a>
 
                   <!-- Card 2: Proyek Website -->
-                  <div class="project-card-compact prototype-hotspot" id="s5-proj-card-2" data-target="screen-project-detail-2">
+                  <a href="#screen-project-detail-2" class="project-card-compact prototype-hotspot" id="s5-proj-card-2" data-target="screen-project-detail-2">
                     <img src="website.png" alt="Proyek Custom Website" class="proj-card-img" />
                     <div class="proj-meta">
                       <h4>Proyek Custom Website</h4>
@@ -420,10 +291,10 @@
                       <p>Pembuatan website kustom untuk memenuhi segala kebutuhan digital klien...</p>
                       <span class="click-details">Detail Proyek ➜</span>
                     </div>
-                  </div>
+                  </a>
 
                   <!-- Card 3: School News Poster -->
-                  <div class="project-card-compact prototype-hotspot" id="s5-proj-card-3" data-target="screen-project-detail-3">
+                  <a href="#screen-project-detail-3" class="project-card-compact prototype-hotspot" id="s5-proj-card-3" data-target="screen-project-detail-3">
                     <img src="Instagram post - 2.png" alt="Poster Berita Project" class="proj-card-img" />
                     <div class="proj-meta">
                       <h4>Poster Berita (School Project)</h4>
@@ -431,10 +302,10 @@
                       <p>Mendesain poster berita sekolah menggunakan Figma untuk menyajikan informasi...</p>
                       <span class="click-details">Detail Proyek ➜</span>
                     </div>
-                  </div>
+                  </a>
 
                   <!-- Card 4: MLBB Boost & Tourney -->
-                  <div class="project-card-compact prototype-hotspot" id="s5-proj-card-4" data-target="screen-project-detail-4">
+                  <a href="#screen-project-detail-4" class="project-card-compact prototype-hotspot" id="s5-proj-card-4" data-target="screen-project-detail-4">
                     <img src="ml.jpeg" alt="Tournament MLBB Info" class="proj-card-img" />
                     <div class="proj-meta">
                       <h4>MLBB Turnamen & Jasa Joki</h4>
@@ -442,7 +313,7 @@
                       <p>Analisis gameplay komparatif dan jasa joki Mobile Legends untuk menaikkan rank...</p>
                       <span class="click-details">Detail Proyek ➜</span>
                     </div>
-                  </div>
+                  </a>
 
                 </div>
               </div>
@@ -455,24 +326,24 @@
           <div class="frame-label"><span class="frame-name">6. Detail Proyek 1</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s6-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s6-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s6-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s6-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s6-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s6-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s6-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s6-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s6-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s6-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item active prototype-hotspot" id="s6-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s6-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s6-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s6-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
             <main class="mock-main">
               <div class="project-detail-layout">
                 <div class="detail-header-row">
-                  <button class="btn-back-projects prototype-hotspot" id="s6-btn-back" data-target="screen-projects">⬅ Kembali ke Proyek</button>
+                  <a href="#screen-projects" class="btn-back-projects prototype-hotspot" id="s6-btn-back" data-target="screen-projects">⬅ Kembali ke Proyek</a>
                   <h2 class="detail-title">Film Pendek: Watch in Silence</h2>
                 </div>
                 <div class="detail-grid">
@@ -515,24 +386,24 @@
           <div class="frame-label"><span class="frame-name">7. Detail Proyek 2</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s7-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s7-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s7-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s7-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s7-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s7-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s7-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s7-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s7-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s7-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item active prototype-hotspot" id="s7-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s7-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s7-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s7-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
             <main class="mock-main">
               <div class="project-detail-layout">
                 <div class="detail-header-row">
-                  <button class="btn-back-projects prototype-hotspot" id="s7-btn-back" data-target="screen-projects">⬅ Kembali ke Proyek</button>
+                  <a href="#screen-projects" class="btn-back-projects prototype-hotspot" id="s7-btn-back" data-target="screen-projects">⬅ Kembali ke Proyek</a>
                   <h2 class="detail-title">Proyek Website Kustom</h2>
                 </div>
                 <div class="detail-grid">
@@ -578,24 +449,24 @@
           <div class="frame-label"><span class="frame-name">10. Detail Proyek 3</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s10-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s10-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s10-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s10-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s10-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s10-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s10-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s10-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s10-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s10-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item active prototype-hotspot" id="s10-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s10-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s10-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s10-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
             <main class="mock-main">
               <div class="project-detail-layout">
                 <div class="detail-header-row">
-                  <button class="btn-back-projects prototype-hotspot" id="s10-btn-back" data-target="screen-projects">⬅ Kembali ke Proyek</button>
+                  <a href="#screen-projects" class="btn-back-projects prototype-hotspot" id="s10-btn-back" data-target="screen-projects">⬅ Kembali ke Proyek</a>
                   <h2 class="detail-title">Poster Berita (School Project)</h2>
                 </div>
                 <div class="detail-grid">
@@ -633,24 +504,24 @@
           <div class="frame-label"><span class="frame-name">11. Detail Proyek 4</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s11-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s11-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s11-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s11-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s11-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s11-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s11-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s11-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s11-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s11-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item active prototype-hotspot" id="s11-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item prototype-hotspot" id="s11-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s11-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s11-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
             <main class="mock-main">
               <div class="project-detail-layout">
                 <div class="detail-header-row">
-                  <button class="btn-back-projects prototype-hotspot" id="s11-btn-back" data-target="screen-projects">⬅ Kembali ke Proyek</button>
+                  <a href="#screen-projects" class="btn-back-projects prototype-hotspot" id="s11-btn-back" data-target="screen-projects">⬅ Kembali ke Proyek</a>
                   <h2 class="detail-title">MLBB Turnamen & Jasa Joki</h2>
                 </div>
                 <div class="detail-grid">
@@ -688,17 +559,17 @@
           <div class="frame-label"><span class="frame-name">8. Contact Screen</span><span class="frame-size">1024 x 640</span></div>
           <div class="screen-content">
             <header class="mock-header">
-              <div class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></div>
+              <a href="#screen-home" class="mock-logo prototype-hotspot" data-target="screen-home">PORTOFOLIO<span>KIFU</span></a>
               <nav class="mock-nav">
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s8-nav-home" data-target="screen-home">Home</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s8-nav-explore" data-target="screen-explore">Explore</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s8-nav-skills" data-target="screen-skills">Skills</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s8-nav-tools" data-target="screen-tools">Tools</a>
-                <a href="#" class="mock-nav-item prototype-hotspot" id="s8-nav-projects" data-target="screen-projects">Proyek</a>
-                <a href="#" class="mock-nav-item active prototype-hotspot" id="s8-nav-contact" data-target="screen-contact">Contact</a>
+                <a href="#screen-home" class="mock-nav-item prototype-hotspot" id="s8-nav-home" data-target="screen-home">Home</a>
+                <a href="#screen-explore" class="mock-nav-item prototype-hotspot" id="s8-nav-explore" data-target="screen-explore">Explore</a>
+                <a href="#screen-skills" class="mock-nav-item prototype-hotspot" id="s8-nav-skills" data-target="screen-skills">Skills</a>
+                <a href="#screen-tools" class="mock-nav-item prototype-hotspot" id="s8-nav-tools" data-target="screen-tools">Tools</a>
+                <a href="#screen-projects" class="mock-nav-item prototype-hotspot" id="s8-nav-projects" data-target="screen-projects">Proyek</a>
+                <a href="#screen-contact" class="mock-nav-item active prototype-hotspot" id="s8-nav-contact" data-target="screen-contact">Contact</a>
               </nav>
               <div class="header-actions-group">
-                <button class="mock-btn-cv prototype-hotspot" id="s8-btn-cv" data-target="screen-cv">CV Saya</button>
+                <a href="#screen-cv" class="mock-btn-cv prototype-hotspot" id="s8-btn-cv" data-target="screen-cv">CV Saya</a>
                 <a href="https://www.figma.com/design/l6Zp5T2D5J3k4u8/Portofolio-Fauzan-Zainul-Arifin" target="_blank" class="mock-btn-figma">Buka di Figma</a>
               </div>
             </header>
@@ -712,7 +583,7 @@
                     <input type="email" placeholder="Email Anda" class="contact-input" required />
                     <textarea placeholder="Pesan Anda..." class="contact-textarea" rows="4" required></textarea>
                     <!-- Form submit triggers transition back to Home with a success toast -->
-                    <button type="submit" class="contact-btn-submit prototype-hotspot" id="s8-btn-submit" data-target="screen-home">Kirim Pesan & Return Home</button>
+                    <a href="#screen-home" class="contact-btn-submit prototype-hotspot" id="s8-btn-submit" data-target="screen-home" onclick="triggerSubmitSim()">Kirim Pesan & Return Home</a>
                   </form>
                 </div>
                 <div class="contact-right">
@@ -745,7 +616,7 @@
                   <button class="cv-action-btn print-btn">🖨️ Cetak CV</button>
                   <button class="cv-action-btn download-btn">📥 Download PDF</button>
                 </div>
-                <button class="cv-close-btn prototype-hotspot" id="s9-btn-close" data-target="screen-home">✖ Close CV</button>
+                <a href="#screen-home" class="cv-close-btn prototype-hotspot" id="s9-btn-close" data-target="screen-home">✖ Close CV</a>
               </div>
               <div class="cv-paper">
                 <div class="cv-hero-banner">
@@ -800,113 +671,6 @@
       </div>
     </div>
 
-    <!-- RIGHT SIDEBAR: Selected Connection Inspector -->
-    <aside class="sidebar right-sidebar">
-      <div class="sidebar-header">
-        <h3>Prototype Inspector</h3>
-      </div>
-      <div class="sidebar-content">
-        <div id="inspector-empty" class="inspector-section empty-state">
-          <p>Pilih salah satu garis hubung atau elemen hotspot di kanvas untuk melihat setelan prototipe.</p>
-        </div>
-        <div id="inspector-selected" class="inspector-section" style="display: none;">
-          <div class="inspector-item">
-            <span class="ins-label">Tipe Pemicu (Trigger)</span>
-            <span class="ins-value glow-badge">On Click (Ketuk)</span>
-          </div>
-          <div class="inspector-item">
-            <span class="ins-label">Aksi (Action)</span>
-            <span class="ins-value highlight-blue">Navigate To (Pindah Layar)</span>
-          </div>
-          <div class="inspector-item">
-            <span class="ins-label">Sumber (Source ID)</span>
-            <span class="ins-value" id="ins-source-id">s1-nav-explore</span>
-          </div>
-          <div class="inspector-item">
-            <span class="ins-label">Target (Target Frame)</span>
-            <span class="ins-value highlight-green" id="ins-target-name">2. Explore Screen</span>
-          </div>
-          <div class="inspector-item">
-            <span class="ins-label">Animasi Transisi</span>
-            <span class="ins-value">Smart Animate (Lancar)</span>
-          </div>
-          <div class="inspector-item">
-            <span class="ins-label">Durasi</span>
-            <span class="ins-value">300ms (Ease-In-Out)</span>
-          </div>
-          
-          <div class="action-card-play">
-            <p>Ingin mencoba alur ini langsung?</p>
-            <button class="btn-play-trigger" onclick="playSelectedFlow()">Jalankan Alur Ini ➜</button>
-          </div>
-        </div>
-      </div>
-    </aside>
-
-  </div>
-
-  <!-- ================= PLAY MODE (PRESENTATION WORKSPACE) ================= -->
-  <div class="presentation-container" id="workspace-presentation" style="display: none;">
-    <!-- Play Mode Top Menu -->
-    <div class="play-top-menu">
-      <button class="play-back-btn" onclick="setMode('canvas')">
-        ⬅ Kembali ke Kanvas Editor
-      </button>
-      
-      <!-- Device Selector Switcher (Requested by User!) -->
-      <div class="device-selector">
-        <span class="device-label">Ubah Perangkat:</span>
-        <div class="device-btn-group">
-          <button class="device-btn active" id="btn-device-desktop" onclick="setDeviceFrame('desktop')">
-            💻 Laptop (16:10)
-          </button>
-          <button class="device-btn" id="btn-device-mobile" onclick="setDeviceFrame('mobile')">
-            📱 Smartphone
-          </button>
-        </div>
-      </div>
-
-      <div class="play-status">
-        <span class="flow-name">Alur Aktif: Fauzan Portfolio Flow</span>
-        <div class="play-actions">
-          <button class="play-action-btn" onclick="restartPresentation()" title="Ulangi Dari Awal">
-            🔄 Restart
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Presentation Canvas hosting the device frame -->
-    <div class="presentation-viewport">
-      
-      <!-- Device Wrapper: Desktop Frame -->
-      <div class="device-frame desktop-device" id="device-wrapper">
-        <div class="device-bezel">
-          <!-- Webcam Dot for Laptop -->
-          <div class="laptop-webcam" id="device-camera-dot"></div>
-          <!-- Screen Viewport -->
-          <div class="device-viewport" id="device-viewport-container">
-            <!-- Screen Content will be loaded dynamically here via cloned nodes -->
-          </div>
-        </div>
-        <!-- Laptop Base Shadow / Stand (Hidden in Mobile) -->
-        <div class="laptop-base" id="device-laptop-base">
-          <div class="laptop-notch"></div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Floating Toast Notification -->
-    <div class="success-toast" id="submit-toast">
-      <div class="toast-content">
-        <span class="toast-icon">🚀</span>
-        <div>
-          <h4>Pesan Berhasil Terkirim!</h4>
-          <p>Terima kasih. Formulir telah disimulasikan dan Anda dialihkan kembali ke Home.</p>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- ================= WEBSITE VIEWPORT ================= -->
@@ -914,10 +678,16 @@
     <!-- Screen content will be loaded dynamically here via cloned nodes -->
   </div>
 
-  <!-- Floating Toggle Mode button for simulation -->
-  <button class="floating-editor-toggle" onclick="setMode('canvas')" title="Buka Mode Editor Figma (Simulasi)">
-    📐 Mode Editor (Simulasi)
-  </button>
+  <!-- Floating Toast Notification -->
+  <div class="success-toast" id="submit-toast">
+    <div class="toast-content">
+      <span class="toast-icon">🚀</span>
+      <div>
+        <h4>Pesan Berhasil Terkirim!</h4>
+        <p>Terima kasih. Formulir telah disimulasikan dan Anda dialihkan kembali ke Home.</p>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

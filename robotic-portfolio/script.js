@@ -138,8 +138,11 @@ window.addEventListener('DOMContentLoaded', () => {
   initCanvasWheel();
   initSidebarList();
   
-  // Set website mode as default layout on startup
-  setMode('website');
+  // Set website mode or export mode based on URL hash on startup
+  checkHash();
+
+  // Listen for hash changes
+  window.addEventListener('hashchange', checkHash);
 
   // Wait a small bit for browser layout calculation before drawing SVG paths
   setTimeout(() => {
@@ -156,7 +159,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Setup click hotspot delegation for play mode presentation view
   const presentationContainer = document.getElementById('device-viewport-container');
-  presentationContainer.addEventListener('click', handlePresentationClick);
+  if (presentationContainer) {
+    presentationContainer.addEventListener('click', handlePresentationClick);
+  }
 
   // Setup click hotspot delegation for website mode view
   const websiteContainer = document.getElementById('workspace-website');
@@ -164,6 +169,24 @@ window.addEventListener('DOMContentLoaded', () => {
     websiteContainer.addEventListener('click', handlePresentationClick);
   }
 });
+
+function checkHash() {
+  const hash = window.location.hash;
+  if (hash === '#export') {
+    setMode('export');
+  } else if (hash.startsWith('#screen-')) {
+    const screenId = hash.slice(1);
+    const screen = document.getElementById(screenId);
+    if (screen) {
+      setMode('website');
+      navigateToScreen(screenId, false);
+    }
+  } else {
+    // Default to home screen in website mode
+    setMode('website');
+    navigateToScreen('screen-home', false);
+  }
+}
 
 // ==========================================================================
 // CANVAS PAN & ZOOM FUNCTIONS
@@ -551,9 +574,14 @@ function setMode(mode) {
   const workspaceWebsite = document.getElementById('workspace-website');
 
   // Remove all mode classes from body
-  document.body.classList.remove('website-mode', 'editor-mode', 'play-mode');
+  document.body.classList.remove('website-mode', 'editor-mode', 'play-mode', 'export-canvas-mode');
 
-  if (mode === 'website') {
+  if (mode === 'export') {
+    document.body.classList.add('export-canvas-mode');
+    if (workspaceCanvas) workspaceCanvas.style.display = 'block';
+    if (workspacePresentation) workspacePresentation.style.display = 'none';
+    if (workspaceWebsite) workspaceWebsite.style.display = 'none';
+  } else if (mode === 'website') {
     document.body.classList.add('website-mode');
     if (workspaceCanvas) workspaceCanvas.style.display = 'none';
     if (workspacePresentation) workspacePresentation.style.display = 'none';
@@ -676,15 +704,12 @@ function handlePresentationClick(e) {
   const hotspot = e.target.closest('.prototype-hotspot');
   
   if (hotspot) {
-    const targetScreenId = hotspot.getAttribute('data-target');
-    if (targetScreenId) {
-      // If contact form submit button was clicked, trigger success toast first
-      if (hotspot.id === 's8-btn-submit') {
-        triggerSubmitSim();
-      } else {
-        navigateToScreen(targetScreenId);
-      }
+    if (hotspot.id === 's8-btn-submit') {
+      triggerSubmitSim(e);
     }
+    // For other hotspots, the browser's native anchor tag handling (href="#...")
+    // will change the URL hash, which triggers the 'hashchange' listener to navigate.
+    // So we don't need to call navigateToScreen programmatically here.
   } else {
     // Clicked outside a hotspot, flash all blue overlays
     flashHotspots();
@@ -716,12 +741,13 @@ function flashHotspots() {
 }
 
 // Simulation function for Contact Message Form Submission
-function triggerSubmitSim() {
+function triggerSubmitSim(event) {
+  if (event) event.preventDefault();
   const toast = document.getElementById('submit-toast');
-  toast.classList.add('show');
+  if (toast) toast.classList.add('show');
   
   setTimeout(() => {
-    toast.classList.remove('show');
-    navigateToScreen('screen-home');
+    if (toast) toast.classList.remove('show');
+    window.location.hash = '#screen-home';
   }, 3000);
 }
