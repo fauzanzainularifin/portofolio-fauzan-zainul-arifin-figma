@@ -55,8 +55,8 @@ const connectionsData = [
   { id: 'c40', fromId: 's5-btn-cv', toId: 'screen-cv', label: 'Tombol CV Saya' },
   { id: 'c41', fromId: 's5-proj-card-1', toId: 'screen-project-detail-1', label: 'Detail Film Pendek' },
   { id: 'c42', fromId: 's5-proj-card-2', toId: 'screen-project-detail-2', label: 'Detail Proyek Web' },
-  { id: 'c43', fromId: 's5-proj-card-3', toId: 'screen-contact', label: 'Order Jasa Desain Poster' },
-  { id: 'c44', fromId: 's5-proj-card-4', toId: 'screen-contact', label: 'Order Jasa Joki MLBB' },
+  { id: 'c43', fromId: 's5-proj-card-3', toId: 'screen-project-detail-3', label: 'Detail Poster Berita' },
+  { id: 'c44', fromId: 's5-proj-card-4', toId: 'screen-project-detail-4', label: 'Detail MLBB Turnamen' },
 
   // SCREEN 6 (PROJECT DETAIL 1) -> Targets
   { id: 'c45', fromId: 's6-nav-home', toId: 'screen-home', label: 'Tab Home' },
@@ -89,12 +89,32 @@ const connectionsData = [
   { id: 'c68', fromId: 's8-btn-submit', toId: 'screen-home', label: 'Kirim Formulir (Redirect Home)' },
 
   // SCREEN 9 (CV VIEWER) -> Targets
-  { id: 'c69', fromId: 's9-btn-close', toId: 'screen-home', label: 'Tutup CV Saya' }
+  { id: 'c69', fromId: 's9-btn-close', toId: 'screen-home', label: 'Tutup CV Saya' },
+
+  // SCREEN 10 (PROJECT DETAIL 3) -> Targets
+  { id: 'c70', fromId: 's10-nav-home', toId: 'screen-home', label: 'Tab Home' },
+  { id: 'c71', fromId: 's10-nav-explore', toId: 'screen-explore', label: 'Tab Explore' },
+  { id: 'c72', fromId: 's10-nav-skills', toId: 'screen-skills', label: 'Tab Skills' },
+  { id: 'c73', fromId: 's10-nav-tools', toId: 'screen-tools', label: 'Tab Tools' },
+  { id: 'c74', fromId: 's10-nav-projects', toId: 'screen-projects', label: 'Tab Proyek' },
+  { id: 'c75', fromId: 's10-nav-contact', toId: 'screen-contact', label: 'Tab Kontak' },
+  { id: 'c76', fromId: 's10-btn-cv', toId: 'screen-cv', label: 'Tombol CV Saya' },
+  { id: 'c77', fromId: 's10-btn-back', toId: 'screen-projects', label: 'Kembali Ke Daftar Proyek' },
+
+  // SCREEN 11 (PROJECT DETAIL 4) -> Targets
+  { id: 'c78', fromId: 's11-nav-home', toId: 'screen-home', label: 'Tab Home' },
+  { id: 'c79', fromId: 's11-nav-explore', toId: 'screen-explore', label: 'Tab Explore' },
+  { id: 'c80', fromId: 's11-nav-skills', toId: 'screen-skills', label: 'Tab Skills' },
+  { id: 'c81', fromId: 's11-nav-tools', toId: 'screen-tools', label: 'Tab Tools' },
+  { id: 'c82', fromId: 's11-nav-projects', toId: 'screen-projects', label: 'Tab Proyek' },
+  { id: 'c83', fromId: 's11-nav-contact', toId: 'screen-contact', label: 'Tab Kontak' },
+  { id: 'c84', fromId: 's11-btn-cv', toId: 'screen-cv', label: 'Tombol CV Saya' },
+  { id: 'c85', fromId: 's11-btn-back', toId: 'screen-projects', label: 'Kembali Ke Daftar Proyek' }
 ];
 
 // App State
 const state = {
-  mode: 'canvas',             // 'canvas' or 'play'
+  mode: 'website',             // 'website', 'canvas', or 'play'
   zoom: 0.65,                 // default zoom level for 1080p canvas fit
   panX: 50,                   // horizontal offset
   panY: 50,                   // vertical offset
@@ -118,6 +138,9 @@ window.addEventListener('DOMContentLoaded', () => {
   initCanvasWheel();
   initSidebarList();
   
+  // Set website mode as default layout on startup
+  setMode('website');
+
   // Wait a small bit for browser layout calculation before drawing SVG paths
   setTimeout(() => {
     drawWires();
@@ -134,6 +157,12 @@ window.addEventListener('DOMContentLoaded', () => {
   // Setup click hotspot delegation for play mode presentation view
   const presentationContainer = document.getElementById('device-viewport-container');
   presentationContainer.addEventListener('click', handlePresentationClick);
+
+  // Setup click hotspot delegation for website mode view
+  const websiteContainer = document.getElementById('workspace-website');
+  if (websiteContainer) {
+    websiteContainer.addEventListener('click', handlePresentationClick);
+  }
 });
 
 // ==========================================================================
@@ -519,20 +548,36 @@ function setMode(mode) {
   const btnPlay = document.getElementById('btn-play-mode');
   const workspaceCanvas = document.getElementById('workspace-canvas');
   const workspacePresentation = document.getElementById('workspace-presentation');
+  const workspaceWebsite = document.getElementById('workspace-website');
 
-  if (mode === 'canvas') {
-    btnCanvas.classList.add('active');
-    btnPlay.classList.remove('active');
-    workspaceCanvas.style.display = 'flex';
-    workspacePresentation.style.display = 'none';
+  // Remove all mode classes from body
+  document.body.classList.remove('website-mode', 'editor-mode', 'play-mode');
+
+  if (mode === 'website') {
+    document.body.classList.add('website-mode');
+    if (workspaceCanvas) workspaceCanvas.style.display = 'none';
+    if (workspacePresentation) workspacePresentation.style.display = 'none';
+    if (workspaceWebsite) workspaceWebsite.style.display = 'block';
+    
+    // Render current active screen in website view
+    navigateToScreen(state.activeScreenId, false);
+  } else if (mode === 'canvas') {
+    document.body.classList.add('editor-mode');
+    if (btnCanvas) btnCanvas.classList.add('active');
+    if (btnPlay) btnPlay.classList.remove('active');
+    if (workspaceCanvas) workspaceCanvas.style.display = 'flex';
+    if (workspacePresentation) workspacePresentation.style.display = 'none';
+    if (workspaceWebsite) workspaceWebsite.style.display = 'none';
     
     // Redraw paths to ensure coordinates are updated
     setTimeout(drawWires, 50);
   } else {
-    btnCanvas.classList.remove('active');
-    btnPlay.classList.add('active');
-    workspaceCanvas.style.display = 'none';
-    workspacePresentation.style.display = 'flex';
+    document.body.classList.add('play-mode');
+    if (btnCanvas) btnCanvas.classList.remove('active');
+    if (btnPlay) btnPlay.classList.add('active');
+    if (workspaceCanvas) workspaceCanvas.style.display = 'none';
+    if (workspacePresentation) workspacePresentation.style.display = 'flex';
+    if (workspaceWebsite) workspaceWebsite.style.display = 'none';
     
     // Initialize active screen in presentation viewport
     restartPresentation();
@@ -567,7 +612,12 @@ function restartPresentation() {
 }
 
 function navigateToScreen(screenId, animate = true) {
-  const container = document.getElementById('device-viewport-container');
+  let container;
+  if (state.mode === 'website') {
+    container = document.getElementById('workspace-website');
+  } else {
+    container = document.getElementById('device-viewport-container');
+  }
   if (!container) return;
 
   const sourceScreen = document.getElementById(screenId);
