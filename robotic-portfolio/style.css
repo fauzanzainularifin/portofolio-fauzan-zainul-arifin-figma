@@ -2099,3 +2099,385 @@ body.export-canvas-mode .figma-frame {
   background: var(--bg-dark) !important;
 }
 
+/* ==========================================================================
+   MOBILE RESPONSIVE STYLES (max-width: 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Global / Container Reset */
+  body.website-mode {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+  
+  body.website-mode .website-container {
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: visible !important;
+  }
+
+  .play-screen {
+    position: relative !important;
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+
+  /* 2. Header / Navigation */
+  .mock-header {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 1.5rem 1rem !important;
+    gap: 1.2rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .mock-nav {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.8rem !important;
+  }
+
+  .mock-nav-item {
+    font-size: 0.8rem !important;
+    padding: 4px 8px !important;
+  }
+
+  .header-actions-group {
+    width: 100% !important;
+    justify-content: center !important;
+    gap: 0.8rem !important;
+  }
+
+  .mock-btn-cv, .mock-btn-figma {
+    flex: 1 !important;
+    text-align: center !important;
+    justify-content: center !important;
+    font-size: 0.75rem !important;
+    padding: 8px 12px !important;
+  }
+
+  /* 3. Main Content Wrapper */
+  body.website-mode .mock-main {
+    padding: 1.5rem 1rem !important;
+    height: auto !important;
+    overflow-y: visible !important;
+  }
+
+  /* 4. Home Screen */
+  .hero-section {
+    flex-direction: column-reverse !important;
+    gap: 2rem !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .hero-left {
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .hero-tag {
+    font-size: 0.7rem !important;
+  }
+
+  .hero-title {
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+  }
+
+  .hero-desc {
+    font-size: 0.75rem !important;
+  }
+
+  .hero-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.8rem !important;
+    margin-top: 1.2rem !important;
+  }
+
+  .hero-btn-primary, .hero-btn-secondary {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 10px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .avatar-glow {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  /* 5. Explore & Skills */
+  .explore-section {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: stretch !important;
+  }
+
+  .explore-left {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .explore-left h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .explore-p {
+    font-size: 0.8rem !important;
+  }
+
+  .explore-btn-next {
+    display: inline-block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .explore-right {
+    width: 100% !important;
+  }
+
+  .robotic-terminal {
+    width: 100% !important;
+  }
+
+  .skills-layout {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  .skills-card {
+    padding: 1.2rem !important;
+  }
+
+  .skills-card h3 {
+    font-size: 0.95rem !important;
+  }
+
+  .skill-info {
+    font-size: 0.7rem !important;
+  }
+
+  .skills-footer {
+    margin-top: 1.5rem !important;
+  }
+
+  .skills-btn-next {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* 6. Tools Screen */
+  .tools-layout {
+    gap: 1.5rem !important;
+  }
+
+  .tools-header {
+    text-align: center !important;
+  }
+
+  .tools-header h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .tools-header p {
+    font-size: 0.8rem !important;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.8rem !important;
+  }
+
+  .tool-icon-card {
+    padding: 1rem !important;
+  }
+
+  .tool-icon-card img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .tool-icon-card span {
+    font-size: 0.75rem !important;
+  }
+
+  .tools-footer {
+    margin-top: 1.5rem !important;
+  }
+
+  .tools-btn-next {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* 7. Projects Gallery */
+  .projects-layout h2 {
+    font-size: 1.5rem !important;
+    text-align: center !important;
+  }
+
+  .projects-layout p {
+    font-size: 0.8rem !important;
+    text-align: center !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+  }
+
+  .project-card {
+    min-height: auto !important;
+  }
+
+  .proj-card-img {
+    height: 140px !important;
+  }
+
+  .proj-card-body h4 {
+    font-size: 0.9rem !important;
+  }
+
+  .proj-card-body p {
+    font-size: 0.75rem !important;
+  }
+
+  /* 8. Project Details */
+  .detail-header-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.8rem !important;
+  }
+
+  .detail-title {
+    font-size: 1.3rem !important;
+  }
+
+  .btn-back-projects {
+    font-size: 0.75rem !important;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .detail-visual {
+    width: 100% !important;
+  }
+
+  .browser-mock-preview {
+    width: 100% !important;
+  }
+
+  .video-preview-container, .poster-preview-container, .ml-preview-container {
+    width: 100% !important;
+    max-height: 240px !important;
+  }
+
+  .detail-info-card {
+    padding: 1rem !important;
+    gap: 0.8rem !important;
+  }
+
+  .detail-meta-item strong {
+    font-size: 0.75rem !important;
+  }
+
+  .detail-meta-item span {
+    font-size: 0.75rem !important;
+  }
+
+  /* 9. Contact Screen */
+  .contact-section-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .contact-left h2 {
+    font-size: 1.5rem !important;
+    text-align: center !important;
+  }
+
+  .contact-input, .contact-textarea {
+    font-size: 0.8rem !important;
+  }
+
+  .contact-btn-submit {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .contact-right {
+    text-align: center !important;
+  }
+
+  .direct-links-grid {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .contact-social-btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 10px !important;
+  }
+
+  /* 10. CV Screen */
+  .cv-doc-header {
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    align-items: stretch !important;
+  }
+
+  .cv-doc-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
+  }
+
+  .cv-action-btn, .cv-close-btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    font-size: 0.75rem !important;
+  }
+
+  .cv-paper {
+    padding: 1.2rem !important;
+  }
+
+  .cv-hero-banner h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .cv-hero-banner p {
+    font-size: 0.75rem !important;
+  }
+
+  .cv-body-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .cv-col-left {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
+
+
