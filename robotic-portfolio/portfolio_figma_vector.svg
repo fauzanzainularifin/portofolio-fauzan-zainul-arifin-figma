@@ -1,0 +1,303 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 2400" width="1440" height="2400" style="background:#0a0a1d; font-family:'Poppins', sans-serif;">
+  <defs>
+    <!-- Fonts Embed Hint for Figma -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap');
+      .title-text { font-family: 'Poppins', sans-serif; font-weight: 700; }
+      .body-text { font-family: 'Poppins', sans-serif; font-weight: 400; }
+      .bold-text { font-family: 'Poppins', sans-serif; font-weight: 600; }
+    </style>
+    
+    <!-- Gradients -->
+    <linearGradient id="neon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7f3fff" />
+      <stop offset="50%" stop-color="#3f6fff" />
+      <stop offset="100%" stop-color="#24d6dc" />
+    </linearGradient>
+    
+    <linearGradient id="btn-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7f3fff" />
+      <stop offset="50%" stop-color="#3f6fff" />
+      <stop offset="100%" stop-color="#24d6dc" />
+    </linearGradient>
+
+    <linearGradient id="header-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#100c38" />
+      <stop offset="100%" stop-color="#1a136d" />
+    </linearGradient>
+
+    <linearGradient id="placeholder-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161233" />
+      <stop offset="100%" stop-color="#0a0a1d" />
+    </linearGradient>
+
+    <!-- Filters for Neon Glow Effect -->
+    <filter id="neon-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- ================= HEADER SECTION ================= -->
+  <g id="Header" transform="translate(0, 0)">
+    <!-- Header Background -->
+    <rect width="1440" height="90" fill="url(#header-grad)" />
+    <!-- Header bottom shadow border -->
+    <line x1="0" y1="90" x2="1440" y2="90" stroke="#3f6fff" stroke-width="2" opacity="0.5" />
+    
+    <!-- Logo -->
+    <text x="100" y="58" class="title-text" font-size="24" fill="url(#neon-grad)" letter-spacing="3">PORTOFOLIO</text>
+    <!-- Logo accent box KIFU -->
+    <rect x="290" y="32" width="70" height="32" rx="5" fill="#24d6dc" />
+    <text x="325" y="54" text-anchor="middle" class="title-text" font-size="16" fill="#ffffff" letter-spacing="1">KIFU</text>
+
+    <!-- Navigation links -->
+    <g id="Nav-Links" transform="translate(480, 0)">
+      <!-- Home Link (Active) -->
+      <text x="0" y="53" class="bold-text" font-size="16" fill="#ffffff">Home</text>
+      <!-- Active Indicator bar -->
+      <rect x="0" y="65" width="48" height="3" rx="1.5" fill="url(#btn-grad)" filter="url(#neon-shadow)" />
+
+      <text x="80" y="53" class="bold-text" font-size="16" fill="#eeeeee">Explore</text>
+      <text x="170" y="53" class="bold-text" font-size="16" fill="#eeeeee">Tools</text>
+      <text x="240" y="53" class="bold-text" font-size="16" fill="#eeeeee">Proyek</text>
+      <text x="320" y="53" class="bold-text" font-size="16" fill="#eeeeee">Contact</text>
+    </g>
+
+    <!-- Search Input Box -->
+    <g id="Search-Bar" transform="translate(950, 28)">
+      <rect width="180" height="34" rx="17" fill="none" stroke="#3f6fff" stroke-width="2" opacity="0.6" />
+      <text x="18" y="22" class="body-text" font-size="13" fill="#999999">Search...</text>
+    </g>
+
+    <!-- CV Saya Button -->
+    <g id="CV-Button" transform="translate(1160, 28)">
+      <rect width="180" height="34" rx="17" fill="url(#btn-grad)" />
+      <text x="90" y="22" text-anchor="middle" class="title-text" font-size="14" fill="#ffffff">CV Saya</text>
+    </g>
+  </g>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <!-- ================= PROFILE SECTION ================= -->
+  <g id="Profile-Section" transform="translate(180, 160)">
+    <!-- Glow behind image -->
+    <circle cx="90" cy="90" r="90" fill="#7f3fff" opacity="0.15" filter="url(#neon-shadow)" />
+    
+    <!-- Profile Photo Circle Placeholder -->
+    <circle cx="90" cy="90" r="90" fill="url(#placeholder-grad)" stroke="#7f3fff" stroke-width="3" />
+    <text x="90" y="95" text-anchor="middle" class="bold-text" font-size="14" fill="#7f3fff">[Foto Gweh]</text>
+    
+    <!-- Profile Info -->
+    <g transform="translate(240, 20)">
+      <text x="0" y="25" class="title-text" font-size="44" fill="url(#neon-grad)" letter-spacing="2">PROFIL SINGKAT</text>
+      
+      <!-- Paragraph Text blocks (editable lines) -->
+      <text x="0" y="75" class="body-text" font-size="16" fill="#dddddd" line-height="28">
+        <tspan x="0" dy="0">Halo, saya Fauzan Zainul Arifin, seorang mahasiswa dari Universitas Sebelas April</tspan>
+        <tspan x="0" dy="28">yang memiliki minat besar di dunia teknologi, desain, dan editing. Saya hobi bermain</tspan>
+        <tspan x="0" dy="28">game serta suka mempelajari hal-hal baru, terutama yang berhubungan dengan kreatif</tspan>
+        <tspan x="0" dy="28">digital. Saya memiliki tujuan untuk menjadi pribadi yang sukses dan membahagiakan</tspan>
+        <tspan x="0" dy="28">orang tua melalui karya serta kerja keras.</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- ================= SKILLS SECTION ================= -->
+  <g id="Skills-Section" transform="translate(180, 480)">
+    
+    <!-- Card 1: Hard Skill -->
+    <g id="Hard-Skill-Card" transform="translate(0, 0)">
+      <rect width="330" height="340" rx="18" fill="#121229" stroke="#3f6fff" stroke-width="1.5" />
+      <text x="30" y="50" class="title-text" font-size="24" fill="url(#neon-grad)">Hard Skill</text>
+      <!-- Title Underline -->
+      <line x1="30" y1="65" x2="180" y2="65" stroke="#3f6fff" stroke-width="2" />
+      
+      <!-- List Items -->
+      <text x="30" y="110" class="bold-text" font-size="15" fill="#cccccc">&bull; UI/UX Design (Figma)</text>
+      <text x="30" y="150" class="bold-text" font-size="15" fill="#cccccc">&bull; Editing Video (CapCut / Premiere)</text>
+      <text x="30" y="190" class="bold-text" font-size="15" fill="#cccccc">&bull; Web Development dasar (HTML &amp; CSS)</text>
+      <text x="30" y="230" class="bold-text" font-size="15" fill="#cccccc">&bull; Database (MariaDB / MySQL)</text>
+      <text x="30" y="270" class="bold-text" font-size="15" fill="#cccccc">&bull; Graphic Design dasar (Canva / Photoshop)</text>
+    </g>
+
+    <!-- Card 2: Soft Skill -->
+    <g id="Soft-Skill-Card" transform="translate(370, 0)">
+      <rect width="330" height="340" rx="18" fill="#121229" stroke="#3f6fff" stroke-width="1.5" />
+      <text x="30" y="50" class="title-text" font-size="24" fill="url(#neon-grad)">Soft Skill</text>
+      <!-- Title Underline -->
+      <line x1="30" y1="65" x2="180" y2="65" stroke="#3f6fff" stroke-width="2" />
+      
+      <!-- List Items -->
+      <text x="30" y="110" class="bold-text" font-size="15" fill="#cccccc">&bull; Komunikasi</text>
+      <text x="30" y="150" class="bold-text" font-size="15" fill="#cccccc">&bull; Problem Solving</text>
+      <text x="30" y="190" class="bold-text" font-size="15" fill="#cccccc">&bull; Time Management</text>
+      <text x="30" y="230" class="bold-text" font-size="15" fill="#cccccc">&bull; Teamwork</text>
+      <text x="30" y="270" class="bold-text" font-size="15" fill="#cccccc">&bull; Adaptif &amp; mudah belajar hal baru</text>
+    </g>
+
+    <!-- Card 3: Tools yang Dikuasai -->
+    <g id="Tools-Card" transform="translate(740, 0)">
+      <rect width="340" height="340" rx="18" fill="#121229" stroke="#3f6fff" stroke-width="1.5" />
+      <text x="30" y="50" class="title-text" font-size="24" fill="url(#neon-grad)">Tools yang Dikuasai</text>
+      <!-- Title Underline -->
+      <line x1="30" y1="65" x2="280" y2="65" stroke="#3f6fff" stroke-width="2" />
+      
+      <!-- Tools Grid items -->
+      <!-- Column 1 -->
+      <g transform="translate(30, 95)">
+        <!-- Figma -->
+        <circle cx="15" cy="15" r="15" fill="#1e1e1e" />
+        <text x="45" y="20" class="bold-text" font-size="14" fill="#24d6dc">Figma</text>
+        
+        <!-- CapCut -->
+        <g transform="translate(0, 50)">
+          <circle cx="15" cy="15" r="15" fill="#1e1e1e" />
+          <text x="45" y="20" class="bold-text" font-size="14" fill="#24d6dc">CapCut / Premiere</text>
+        </g>
+
+        <!-- Canva -->
+        <g transform="translate(0, 100)">
+          <circle cx="15" cy="15" r="15" fill="#1e1e1e" />
+          <text x="45" y="20" class="bold-text" font-size="14" fill="#24d6dc">Canva</text>
+        </g>
+      </g>
+
+      <!-- Column 2 -->
+      <g transform="translate(190, 95)">
+        <!-- VSCode -->
+        <circle cx="15" cy="15" r="15" fill="#1e1e1e" />
+        <text x="45" y="20" class="bold-text" font-size="14" fill="#24d6dc">VSCode</text>
+        
+        <!-- XAMPP -->
+        <g transform="translate(0, 50)">
+          <circle cx="15" cy="15" r="15" fill="#1e1e1e" />
+          <text x="45" y="20" class="bold-text" font-size="14" fill="#24d6dc">phpMyAdmin</text>
+        </g>
+
+        <!-- GitHub -->
+        <g transform="translate(0, 100)">
+          <circle cx="15" cy="15" r="15" fill="#1e1e1e" />
+          <text x="45" y="20" class="bold-text" font-size="14" fill="#24d6dc">GitHub</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= PROJECTS SECTION ================= -->
+  <g id="Projects-Section" transform="translate(180, 890)">
+    <text x="0" y="40" class="title-text" font-size="44" fill="url(#neon-grad)" letter-spacing="2">PROYEK</text>
+    
+    <!-- Projects Grid -->
+    <g transform="translate(0, 80)">
+      
+      <!-- Project 1: Film Pendek -->
+      <g id="Project-Card-1" transform="translate(0, 0)">
+        <rect width="520" height="420" rx="22" fill="#121229" />
+        <rect width="520" height="420" rx="22" fill="none" stroke="#7f3fff" stroke-width="1" opacity="0.3" />
+        
+        <!-- Photo Placeholder -->
+        <rect x="0" y="0" width="520" height="180" rx="22" fill="url(#placeholder-grad)" />
+        <text x="260" y="100" text-anchor="middle" class="bold-text" font-size="15" fill="#7f3fff">[Poster Watch in Silence]</text>
+        
+        <!-- Content -->
+        <text x="30" y="220" class="title-text" font-size="20" fill="url(#neon-grad)">Film Pendek: Watch in Silence</text>
+        <text x="30" y="248" class="bold-text" font-size="14" fill="#24d6dc">Peran: Editor &amp; Co-Director</text>
+        <text x="30" y="280" class="body-text" font-size="14" fill="#cccccc">
+          <tspan x="30" dy="0">Film tanpa dialog yang mengandalkan gerak tubuh &amp; sound effect.</tspan>
+          <tspan x="30" dy="22">Mengangkat cerita tentang pria misterius membantu wanita.</tspan>
+        </text>
+        <text x="30" y="350" class="bold-text" font-size="14" fill="url(#neon-grad)">Hasil: Visual storytelling yang kuat &amp; plot twist.</text>
+      </g>
+
+      <!-- Project 2: Website -->
+      <g id="Project-Card-2" transform="translate(560, 0)">
+        <rect width="520" height="420" rx="22" fill="#121229" />
+        <rect width="520" height="420" rx="22" fill="none" stroke="#7f3fff" stroke-width="1" opacity="0.3" />
+        
+        <!-- Photo Placeholder -->
+        <rect x="0" y="0" width="520" height="180" rx="22" fill="url(#placeholder-grad)" />
+        <text x="260" y="100" text-anchor="middle" class="bold-text" font-size="15" fill="#7f3fff">[Website Screenshot]</text>
+        
+        <!-- Content -->
+        <text x="30" y="220" class="title-text" font-size="20" fill="url(#neon-grad)">Proyek Website</text>
+        <text x="30" y="248" class="bold-text" font-size="14" fill="#24d6dc">Peran: Website Development</text>
+        <text x="30" y="280" class="body-text" font-size="14" fill="#cccccc">
+          <tspan x="30" dy="0">Membuat website yang dibutuhkan oleh pengguna, saya</tspan>
+          <tspan x="30" dy="22">menciptakan website nya dari awal secara kustom.</tspan>
+        </text>
+        <text x="30" y="350" class="bold-text" font-size="14" fill="url(#neon-grad)">Hasil: Segala kebutuhan konsumen terpenuhi.</text>
+      </g>
+
+      <!-- Project 3: Poster Berita -->
+      <g id="Project-Card-3" transform="translate(0, 460)">
+        <rect width="520" height="400" rx="22" fill="#121229" />
+        <rect width="520" height="400" rx="22" fill="none" stroke="#7f3fff" stroke-width="1" opacity="0.3" />
+        
+        <!-- Photo Placeholder -->
+        <rect x="0" y="0" width="520" height="180" rx="22" fill="url(#placeholder-grad)" />
+        <text x="260" y="100" text-anchor="middle" class="bold-text" font-size="15" fill="#7f3fff">[Poster Berita Project]</text>
+        
+        <!-- Content -->
+        <text x="30" y="220" class="title-text" font-size="20" fill="url(#neon-grad)">Desain Poster Berita (School Project)</text>
+        <text x="30" y="248" class="bold-text" font-size="14" fill="#24d6dc">Peran: Designer</text>
+        <text x="30" y="280" class="body-text" font-size="14" fill="#cccccc">
+          <tspan x="30" dy="0">Tools: Figma. Mendesain poster berita komersial</tspan>
+          <tspan x="30" dy="22">yang dibutuhkan konsumen &amp; sekolah.</tspan>
+        </text>
+      </g>
+
+      <!-- Project 4: Mobile Legend -->
+      <g id="Project-Card-4" transform="translate(560, 460)">
+        <rect width="520" height="400" rx="22" fill="#121229" />
+        <rect width="520" height="400" rx="22" fill="none" stroke="#7f3fff" stroke-width="1" opacity="0.3" />
+        
+        <!-- Photo Placeholder -->
+        <rect x="0" y="0" width="520" height="180" rx="22" fill="url(#placeholder-grad)" />
+        <text x="260" y="100" text-anchor="middle" class="bold-text" font-size="15" fill="#7f3fff">[Tournament MLBB Info]</text>
+        
+        <!-- Content -->
+        <text x="30" y="220" class="title-text" font-size="20" fill="url(#neon-grad)">Joki &amp; Turnamen Mobile Legend</text>
+        <text x="30" y="248" class="bold-text" font-size="14" fill="#24d6dc">Peran: Gamers, Analyst Gameplay</text>
+        <text x="30" y="280" class="body-text" font-size="14" fill="#cccccc">
+          <tspan x="30" dy="0">Aplikasi: Mobile Legends. Menawarkan jasa joki rank</tspan>
+          <tspan x="30" dy="22">serta menjuarai berbagai ajang turnamen daerah.</tspan>
+        </text>
+      </g>
+      
+    </g>
+  </g>
+
+  <!-- ================= CONTACT SECTION ================= -->
+  <g id="Contact-Section" transform="translate(420, 1880)">
+    <!-- Contact Card BG -->
+    <rect width="600" height="320" rx="26" fill="#121229" filter="url(#neon-shadow)" stroke="#3f6fff" stroke-width="1" />
+    
+    <text x="300" y="65" text-anchor="middle" class="title-text" font-size="44" fill="url(#neon-grad)">KONTAK</text>
+    <text x="300" y="110" text-anchor="middle" class="body-text" font-size="18" fill="#dddddd">Silakan hubungi saya melalui:</text>
+    
+    <!-- Link buttons -->
+    <!-- Email Button -->
+    <g id="Email-Btn" transform="translate(60, 160)">
+      <rect width="140" height="50" rx="25" fill="url(#btn-grad)" />
+      <text x="70" y="30" text-anchor="middle" class="bold-text" font-size="15" fill="#ffffff">Email</text>
+    </g>
+
+    <!-- WhatsApp Button -->
+    <g id="WA-Btn" transform="translate(230, 160)">
+      <rect width="140" height="50" rx="25" fill="url(#btn-grad)" />
+      <text x="70" y="30" text-anchor="middle" class="bold-text" font-size="15" fill="#ffffff">WhatsApp</text>
+    </g>
+
+    <!-- Instagram Button -->
+    <g id="IG-Btn" transform="translate(400, 160)">
+      <rect width="140" height="50" rx="25" fill="url(#btn-grad)" />
+      <text x="70" y="30" text-anchor="middle" class="bold-text" font-size="15" fill="#ffffff">Instagram</text>
+    </g>
+  </g>
+
+  <!-- ================= FOOTER ================= -->
+  <g id="Footer" transform="translate(0, 2320)">
+    <line x1="100" y1="0" x2="1340" y2="0" stroke="#3f6fff" stroke-width="1" opacity="0.3" />
+    <text x="720" y="45" text-anchor="middle" class="body-text" font-size="14" fill="#888888">Portofolio Fauzan Zainul Arifin &bull; Neon Gradient Style</text>
+  </g>
+</svg>
